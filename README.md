@@ -5,11 +5,11 @@
 
 ## Final Product
 
-![Main page of Interview Scheduler.](image.png)
+![Main page of Interview Scheduler.](https://github.com/mdzwink/scheduler/blob/master/docs/Interview-Scheduler-App%20(1).png?raw=true)
 
-![Adding new appointment.](image.png)
+![Adding new appointment.](https://github.com/mdzwink/scheduler/blob/master/docs/Interview-Scheduler-App%20(2).png?raw=true)
 
-![Edit or delete appointments.](image.png)
+![Edit or delete appointments.](https://github.com/mdzwink/scheduler/blob/master/docs/Interview-Scheduler-App%20(3).png?raw=true)
 
 ## Setup
 
