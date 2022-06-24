@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
-import Appointment from "./Appointment/index.js"
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "../helpers/selectors.js"
-import useApplicationData from "../hooks/useApplicationData"
+import Appointment from "./Appointment/index.js";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "../helpers/selectors.js";
+import useApplicationData from "../hooks/useApplicationData";
 
 export default function Application(props) {
 
@@ -14,20 +13,25 @@ export default function Application(props) {
     bookInterview,
     cancelInterview
   } = useApplicationData();
-  console.log(state.days)
+
   const appointmentsArr = getAppointmentsForDay(state, state.day);
-  const interviewers = getInterviewersForDay(state, state.day)
+  const interviewers = getInterviewersForDay(state, state.day);
 
   const schedule = appointmentsArr.map(appointment => {
-    const interview = getInterview(state, appointment.interview);
+    const interviewReturn = getInterview(state, appointment.interview);
+    let interview = null;
+    if (interviewReturn) {
+      interview = {...interviewReturn, id: interviewReturn.interviewer.id, interviewer: interviewReturn.interviewer.name };
+    }
+    
     return <Appointment
-    key={appointment.id}
-    id={appointment.id}
-    time={appointment.time}
-    interview={interview}
-    interviewers={interviewers}
-    bookInterview={bookInterview}
-    onDelete={cancelInterview}
+      key={appointment.id}
+      id={appointment.id}
+      time={appointment.time}
+      interview={interview}
+      interviewers={interviewers}
+      bookInterview={bookInterview}
+      onDelete={cancelInterview}
     />
   });
 
@@ -46,10 +50,8 @@ export default function Application(props) {
             days={state.days}
             value={state.day}
             onChange={setDay}
-        />
+          />
         </nav>
-        <div>
-        </div>  
         <img
           className="sidebar__lhl sidebar--centered"
           src="images/lhl.png"
