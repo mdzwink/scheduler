@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.scss";
-import useVisualMode from "../../hooks/useVisualMode"
+import useVisualMode from "../../hooks/useVisualMode";
 import Header from "./Header.js";
 import Show from "./Show.js";
 import Empty from "./Empty.js";
@@ -57,12 +57,13 @@ export default function Appointment(props) {
           interviewer={props.interview.interviewer}
           onDelete={confirmCancel}
           onEdit={edit}
-        />)}
+          />)}
       {mode === CREATE &&
         <Form
-          interviewers={props.interviewers}
-          onSave={save}
-          onCancel={() => back()} 
+        interviewers={props.interviewers}
+        onSave={save}
+        onCancel={() => back()} 
+        data-testid="Edit"
         />}
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === CONFIRM && 
@@ -75,8 +76,7 @@ export default function Appointment(props) {
       {mode === EDIT &&
         <Form
           student={props.interview.student}
-          interviewer={props.interview.interviewer}
-          selected={true}
+          interviewer={props.interview.id}
           interviewers={props.interviewers}
           onSave={save}
           onCancel={() => back()}
@@ -84,5 +84,5 @@ export default function Appointment(props) {
       {mode === ERROR_SAVE && <Error message={"Could not save appointment"} onClose={() => back()}/>}
       {mode === ERROR_DELETE && <Error message={"Could not delete appointment"} onClose={() => back()} />}
     </article>
-  )
+  );
 }

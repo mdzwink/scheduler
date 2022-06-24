@@ -1,4 +1,4 @@
-import React, { useSelect } from "react";
+import React from "react";
 import classNames from "classnames";
 import "components/InterviewerListItem.scss";
 
