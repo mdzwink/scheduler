@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-
+// stores current mode and mode history. Facilitates updates to both through exported 'mode' state, 'transition()' function, and 'back()' function
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
 
@@ -22,10 +22,9 @@ export default function useVisualMode(initial) {
     }
     let updatedHistory = [...history];
     updatedHistory.pop();
-    
     setHistory(updatedHistory);
-    
   };
+
   useEffect(() => {
     setMode(history[history.length - 1]);
   }, [history, setMode]);
