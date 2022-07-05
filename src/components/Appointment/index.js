@@ -21,7 +21,7 @@ const ERROR_DELETE = "Error_Delete";
 
 
 export default function Appointment(props) {
-  const { mode, transition, back} = useVisualMode(props.interview ? SHOW : EMPTY)
+  const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY)
   //initiates the saving process on submission of the Form
   function save(name, interviewer) {
     const interview = {

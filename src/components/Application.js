@@ -18,7 +18,7 @@ export default function Application(props) {
   const interviewers = getInterviewersForDay(state, state.day);
 
   const schedule = appointmentsArr.map(appointment => {
-    const interviewReturn = getInterview(state, appointment.interview); //
+    const interviewReturn = getInterview(state, appointment.interview);
     let interview = null;
     if (interviewReturn) {
       interview = {...interviewReturn, id: interviewReturn.interviewer.id, interviewer: interviewReturn.interviewer.name };
@@ -28,7 +28,7 @@ export default function Application(props) {
       key={appointment.id}
       id={appointment.id}
       time={appointment.time}
-      interview={interview}    // passing interview to Appointment props
+      interview={interview}
       interviewers={interviewers}
       bookInterview={bookInterview}
       onDelete={cancelInterview}
