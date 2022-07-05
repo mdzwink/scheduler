@@ -23,9 +23,8 @@ export function getInterview(state, appointmentData) {
   if (!appointmentData) {
     return null
   }
-  const interviewer = {...state.interviewers[appointmentData.interviewer]}
-
-  let interview = { student: appointmentData.student, interviewer};
+  const interviewer = state.interviewers[appointmentData.interviewer]
+  let interview = { student: appointmentData.student, interviewer };
 
   return interview;
 }

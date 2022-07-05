@@ -8,9 +8,7 @@ export default function useVisualMode(initial) {
   
   function transition(newMode, replace = false) {
     if (replace) {
-      let replacing = [...history]
-      replacing.splice(replacing.length-1, 1, newMode) ;
-      return setHistory(replacing);
+      return setHistory(prev => ([...prev.slice(0, -1), newMode]));
     }
     setMode(newMode);
     setHistory(prev => ([...prev, newMode]));
@@ -20,9 +18,7 @@ export default function useVisualMode(initial) {
     if (history.length === 1) {
       return undefined;
     }
-    let updatedHistory = [...history];
-    updatedHistory.pop();
-    setHistory(updatedHistory);
+    setHistory(prev => ([...prev.slice(0, -1)]));
   };
 
   useEffect(() => {

@@ -28,7 +28,7 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    transition(SAVING, true);
+    transition(SAVING);
     props.bookInterview(props.id, interview)
       .then(() => transition(SHOW))
       .catch(err => transition(ERROR_SAVE, true))
@@ -54,7 +54,7 @@ export default function Appointment(props) {
       {mode === SHOW && (
         <Show 
           student={props.interview.student} 
-          interviewer={props.interview.interviewer}
+          interviewer={ props.interview.interviewer }
           onDelete={confirmCancel}
           onEdit={edit}
           />)}
